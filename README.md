@@ -23,13 +23,6 @@ Start `wsl-vpnkit` from your other WSL 2 distros. Add the command to your `.prof
 wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
 ```
 
-You can also check service status to start service only if needed.
-
-```sh
-wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit status >/dev/null || \
-wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
-```
-
 ### Notes
 
 * Ports on the WSL 2 VM are accessible from the Windows host using `localhost`.
@@ -64,8 +57,8 @@ This will build and import the distro.
 ```sh
 git clone https://github.com/sakai135/wsl-vpnkit.git
 cd wsl-vpnkit/
-./build.sh
-./test.sh
+
+./distro/test.sh
 ```
 
 ## Using `wsl-vpnkit` as a standalone script
@@ -119,13 +112,4 @@ wsl.exe -d wsl-vpnkit --cd /app wsl-vpnkit
 
 wsl --shutdown
 kill -Name wsl-gvproxy
-```
-
-### Run service with debug
-
-If you set DEBUG variable before calling service you can see more debug information
-
-Example:
-```sh
-wsl.exe -d wsl-vpnkit --cd /app DEBUG=1 service wsl-vpnkit restart
 ```
